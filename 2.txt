@@ -1,3 +1,5 @@
 Clone
 Pull
 Push
+Fetch
+Ls
