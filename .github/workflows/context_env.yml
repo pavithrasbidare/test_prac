@@ -24,7 +24,7 @@ jobs:
           if [[ "${{ github.ref }}" == "refs/heads/master" ]]; then
             echo "GIT_BRANCH=main" >> $GITHUB_ENV
           elif [[ "${{ github.ref }}" == "refs/heads/dev" ]]; then
-            echo "GIT_BRANCH=develop" >> $GITHUB_ENV
+            echo "GIT_BRANCH=dev" >> $GITHUB_ENV
           else
             echo "GIT_BRANCH=other" >> $GITHUB_ENV
           fi
