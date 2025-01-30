@@ -1,0 +1,26 @@
+name: Log and Set Workflow Variables
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+
+jobs:
+  log-and-set-vars:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Log GitHub context values
+        run: |
+          echo "Event Name: ${{ github.event_name }}"
+          echo "Actor: ${{ github.actor }}"
+
+      - name: Set USER variable
+        run: echo "USER=${{ github.actor }}" >> $GITHUB_ENV
+
+      - name: Print USER variable
+        run: echo "USER is $USER"
