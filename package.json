@@ -1,0 +1,15 @@
+{
+  "name": "@Sudharshan12313/node-app",
+  "version": "1.0.1",
+  "description": "Simple Node.js application to test GitHub Actions workflow.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "build": "echo 'Building the application...' && node app.js"
+  },
+  "author": "Sudharshan",
+  "license": "NA",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
