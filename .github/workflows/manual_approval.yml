@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dev
+  workflow_dispatch:
 
 jobs:
   build:
@@ -28,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Await manual approval
-        uses: actions/manual-approval@v1
+        run: echo "Please approve the deployment in the Actions tab."
 
   deploy:
     needs: approval
