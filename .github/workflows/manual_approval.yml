@@ -29,7 +29,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Await manual approval
-        run: echo "Please approve the deployment in the Actions tab."
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ secrets.GITHUB_TOKEN }}
+          approvers: user1,user2
 
   deploy:
     needs: approval
