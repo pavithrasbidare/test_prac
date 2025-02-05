@@ -1,0 +1,47 @@
+name: Dynamic Environment Deployment
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+      - 'feature/*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run build
+        run: npm run build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to environment
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/master" ]; then
+            echo "Deploying to production..."
+            # Add your production deployment script here
+          elif [ "${{ github.ref }}" == "refs/heads/dev" ]; then
+            echo "Deploying to staging..."
+            # Add your staging deployment script here
+          elif [[ "${{ github.ref }}" == refs/heads/feature/* ]]; then
+            echo "Deploying to feature environment..."
+            # Add your feature deployment script here
+          fi

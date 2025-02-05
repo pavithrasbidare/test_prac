@@ -3,3 +3,5 @@ Pull
 Push
 Fetch
 Ls
+github
+Master
