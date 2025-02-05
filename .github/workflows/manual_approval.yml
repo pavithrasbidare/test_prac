@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - dev
-  workflow_dispatch:
 
 jobs:
   build:
@@ -32,7 +31,10 @@ jobs:
         uses: trstringer/manual-approval@v1
         with:
           secret: ${{ secrets.GITHUB_TOKEN }}
-          approvers: user1,user2
+          approvers: pavithrasbidare, valid-user-or-team
+          minimum-approvals: 1
+          issue-title: "Manual approval required for workflow run ${{ github.run_id }}"
+          issue-body: "Workflow is pending manual review. Respond 'approved', 'approve', 'lgtm', 'yes' to continue workflow or 'denied', 'deny', 'no' to cancel."
 
   deploy:
     needs: approval
@@ -42,4 +44,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Deploy to staging
-        run: echo "Deploying to staging..."
+        run: echo "Deploying to staging...
