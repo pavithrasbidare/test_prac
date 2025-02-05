@@ -3,3 +3,4 @@ Pull
 Push
 Fetch
 Ls
+github
