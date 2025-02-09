@@ -3,10 +3,6 @@ name: Check GITHUB_TOKEN Permissions
 on:
  workflow_dispatch:
 
-permissions:
-  contents: read 
-  packages: read 
-
 jobs:
   check-permissions:
     runs-on: ubuntu-latest
