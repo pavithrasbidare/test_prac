@@ -1,0 +1,38 @@
+name: Check GITHUB_TOKEN Permissions
+
+on:
+ workflow_dispatch:
+
+permissions:
+  contents: read 
+  packages: read 
+
+jobs:
+  check-permissions:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Allowed (read access)
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2  # Allowed (read access)
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+    - name: Attempt to create a file
+      run: echo "This is a test" > test.txt  # This will fail due to read-only permissions
+
+    - name: Attempt to push changes
+      run: |
+        git config --global user.email "pavithrasbidare@gmail.com"
+        git config --global user.name "Pavithra B"
+        git add test.txt
+        git commit -m "Add test file"
+        git push origin main  # This will fail due to read-only permissions
