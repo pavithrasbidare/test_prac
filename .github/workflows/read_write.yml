@@ -31,4 +31,4 @@ jobs:
         git config --global user.name "Pavithra B"
         git add test.txt
         git commit -m "Add test file"
-        git push origin main  # This will fail due to read-only permissions
+        git push origin master  # This will fail due to read-only permissions
