@@ -23,12 +23,12 @@ jobs:
       run: npm test
 
     - name: Attempt to create a file
-      run: echo "This is a test" > test.txt  # This will fail due to read-only permissions
+      run: echo "This is a test" > pavithra.txt  # This will fail due to read-only permissions
 
     - name: Attempt to push changes
       run: |
         git config --global user.email "pavithrasbidare@gmail.com"
         git config --global user.name "Pavithra B"
-        git add test.txt
+        git add pavithra.txt
         git commit -m "Add test file"
         git push origin master  # This will fail due to read-only permissions
