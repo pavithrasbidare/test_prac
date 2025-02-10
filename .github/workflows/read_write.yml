@@ -29,6 +29,6 @@ jobs:
       run: |
         git config --global user.email "pavithrasbidare@gmail.com"
         git config --global user.name "Pavithra B"
-        git add test.txt
+        git add test1.txt
         git commit -m "Add test file"
         git push origin master  # This will fail due to read-only permissions
