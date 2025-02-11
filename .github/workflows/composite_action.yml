@@ -1,0 +1,17 @@
+name: Composite Action
+
+on:
+ workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run composite action
+      uses: ./composite_action.yml  # Reference the custom file name
+      with:
+        who-to-greet: 'Mona the Octocat'
