@@ -12,6 +12,6 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run Docker action
-      uses: ./hello-world-docker-action
+      uses: ./action.yml
       with:
         who-to-greet: 'Mona the Octocat'
