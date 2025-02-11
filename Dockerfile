@@ -1,3 +1,10 @@
-FROM alpine:3.10
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+FROM node:14
+
+WORKDIR /app
+
+COPY package.json /app
+RUN npm install
+
+COPY . /app
+
+ENTRYPOINT ["sh", "/entrypoint.sh"]
