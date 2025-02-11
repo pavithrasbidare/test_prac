@@ -18,4 +18,4 @@ runs:
     - name: Set random number output
       id: random
       shell: bash  # Specify the shell
-      run: echo "::set-output name=random-number::$(echo $RANDOM)"
+      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
