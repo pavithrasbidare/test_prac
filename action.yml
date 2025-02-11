@@ -1,12 +1,19 @@
-name: 'Hello World Docker Action'
-description: 'Greet someone and record the time'
+name: 'Hello World Composite Action'
+description: 'Greet someone and set a random number output'
 inputs:
   who-to-greet:
     description: 'The name of the person to greet'
     required: true
     default: 'World'
+outputs:
+  random-number:
+    description: 'A random number'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
+  using: 'composite'
+  steps:
+    - name: Print greeting
+      run: echo "Hello ${{ inputs.who-to-greet }}"
+
+    - name: Set random number output
+      id: random
+      run: echo "::set-output name=random-number::$(echo $RANDOM)"
