@@ -12,6 +12,6 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run composite action
-      uses: ./composite_action.yml  # Reference the custom file name
+      uses: ./
       with:
         who-to-greet: 'Mona the Octocat'
