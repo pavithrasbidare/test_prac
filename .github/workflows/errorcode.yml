@@ -1,0 +1,36 @@
+name: Exit Code Example Workflow
+
+on:
+ workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run a successful command
+      run: |
+        echo "This command will succeed"
+        exit 0
+
+    - name: Run a failing command
+      run: |
+        echo "This command will fail"
+        exit 1
+      continue-on-error: true
+
+    - name: Check previous step result
+      if: failure()
+      run: echo "The previous step failed"
+
+    - name: Intentionally fail this step
+      run: |
+        echo "This step will intentionally fail"
+        exit 1
+
+    - name: Check intentional failure
+      if: failure()
+      run: echo "The intentional failure step failed"
