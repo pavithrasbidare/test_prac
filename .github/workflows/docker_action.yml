@@ -1,0 +1,16 @@
+name: Docker Action
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run Docker action
+      uses: ./hello-world-docker-action
+      with:
+        who-to-greet: 'Mona the Octocat'
