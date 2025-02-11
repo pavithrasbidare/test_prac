@@ -19,3 +19,7 @@ runs:
       id: random
       shell: bash  # Specify the shell
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+
+    - name: Print random number
+      shell: bash
+      run: echo "Random number is ${{ steps.random.outputs.random-number }}"
