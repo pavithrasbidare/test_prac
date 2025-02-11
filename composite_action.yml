@@ -1,5 +1,5 @@
 name: 'Hello World Composite Action'
-description: 'Greet someone and say goodbye'
+description: 'Greet someone and set a random number output'
 inputs:
   who-to-greet:
     description: 'The name of the person to greet'
@@ -13,9 +13,6 @@ runs:
   steps:
     - name: Print greeting
       run: echo "Hello ${{ inputs.who-to-greet }}"
-
-    - name: Run goodbye script
-      run: ./goodbye.sh
 
     - name: Set random number output
       id: random
